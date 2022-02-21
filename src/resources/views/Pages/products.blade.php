@@ -10,7 +10,7 @@
 <body>
     @include('Partials.header')
 
-    
+ 
     <div class="container d-flex justify-content-center mt-50 mb-50">
     <div class="row">
     @foreach ($items as $item)
@@ -21,11 +21,9 @@
                 </div>
                 <div class="card-body bg-light text-center">
                     <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">{{$item['Make'] . ' ' . $item['Model']}}</a> </h6> <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a>
-                        <h6>{{"RAM {$item['Memory']}"}}</h6>
-                        <h6>{{"Storage {$item['Storage']}"}}</h6>
+                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">{{$item->name}}</a> </h6> <a href="#" class="text-muted" data-abc="true">{{$item->category}}</a>
                     </div>
-                    <h3 class="mb-0 font-weight-semibold">$250.99</h3>
+                    <h3 class="mb-0 font-weight-semibold">{{$item->price}} EUR</h3>
                     <div> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> </div>
                     <div class="text-muted mb-3">34 reviews</div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
                 </div>
