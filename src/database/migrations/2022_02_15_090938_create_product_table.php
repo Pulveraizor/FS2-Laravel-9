@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('brand');
+            $table->string('model');
             $table->string('desc');
-            $table->string('sku');
-            $table->string('category');
+            $table->string('sku')->nullable($value = true);
+            $table->foreignId('category_id')->references('id')->on('product_category');
             $table->decimal('price');
-            $table->foreignId('discount_id')->references('id')->on('discount')->onDelete('restrict');
+            $table->foreignId('discount_id')->references('id')->on('discount')->nullable($value = true)->default($value = null)->onDelete('restrict');
             $table->timestamps();
         });
     }

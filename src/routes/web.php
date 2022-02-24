@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Products\ProductController;
+use App\Http\Controllers\Orders\OrderController;
+use App\Http\Controllers\Contact;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\Products\ProductController::class, 'products']);
-Route::get('/products', [App\Http\Controllers\Products\ProductController::class, 'products']);
-Route::get('/orders', [App\Http\Controllers\Orders\OrderController::class, 'orders']);
-Route::get('/contact', [App\Http\Controllers\Contact::class, 'contact']);
+Route::get('/', [ProductController::class, 'products']);
+Route::get('/products', [ProductController::class, 'products'])->name('Products.index');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('Products.show');
+Route::get('/products/{category}', [ProductController::class, 'filter'])->name('Products.filter');
+Route::get('/orders', [OrderController::class, 'orders']);
+Route::get('/contact', [Contact::class, 'contact']);
