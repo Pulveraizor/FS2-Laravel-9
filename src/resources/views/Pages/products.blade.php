@@ -32,7 +32,13 @@
                                     <h6 class="font-weight-semibold mb-2">
                                         <a href="{{ route('Products.show', $item->id) }}" class="text-default mb-2" data-abc="true">{{"$item->brand $item->model"}}</a>
                                     </h6>
-                                    <a href="#" class="text-muted" data-abc="true">Category</a>
+                                    @foreach ($categories as $category)
+                                    @if ($item->category_id == $category->id)
+                                    <a href="/?category={{$category->id}}" class="text-muted" data-abc="true">
+                                        {{$category->category}}
+                                    </a>
+                                    @endif
+                                    @endforeach
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">{{$item->price}} EUR</h3>
                                 <div> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> </div>
@@ -40,10 +46,10 @@
                             </div>
                         </div>
                     </div>
-                     @endforeach
+                    @endforeach
                 </div>
 
-               
+
             </div>
 
         </div>
