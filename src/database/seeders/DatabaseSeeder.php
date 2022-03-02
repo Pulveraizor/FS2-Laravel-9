@@ -16,14 +16,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(100)->create();
-      
+
 
         $this->call([
             CategorySeeder::class,
             BrandSeeder::class,
             IdentifierTypeSeeder::class,
-            DiscountIdSeeder::class]);
+            DiscountIdSeeder::class
+        ]);
 
-            \App\Models\Product::factory(10)->create();
+        \App\Models\Product::factory(10)->create();
     }
 }
