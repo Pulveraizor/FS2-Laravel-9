@@ -14,8 +14,8 @@ class ProductController extends Controller
 
         // $items = DB::table('product')->get();
         $products = Models\Product::query();
-        if ($request->has('category') && is_numeric($request->category)) {
-            $products->orWhere('category_id', $request->category);
+        if ($request->has('category')) {
+            $products->orWhere('category_type', $request->category);
         }
 
         if ($request->has('brand')) {
@@ -31,15 +31,15 @@ class ProductController extends Controller
         } elseif ($request->order_by == 'newest') {
             $products->orderBy('created_at');
         } elseif ($request->order_by == 'type') {
-            $products->orderBy('category_id');
+            $products->orderBy('category_type');
         }
         
         $items = $products->get();
         $categories = Models\Category::get();
-        $brands = Models\Product::select('brand')->get();
+        $brands = Models\Brand::get();
 
         $view = view('Pages.products', compact('items', 'categories', 'brands'));
-        $view->with('category_id', $request->category);
+        $view->with('category_type', $request->category);
         $view->with('brand', $request->brand);
 
         return $view;
@@ -48,6 +48,10 @@ class ProductController extends Controller
     public function show(Models\Product $product) {
         
         return view('Products.show', compact('product'));
+    }
+
+    public function create() {
+        return view('Products.create');
     }
 }
 
