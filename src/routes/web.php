@@ -16,9 +16,13 @@ use App\Http\Controllers\Contact;
 |
 */
 
-Route::get('/', [ProductController::class, 'products']);
+Route::get('/', [ProductController::class, 'products'])->name('Home');
 Route::get('/products', [ProductController::class, 'products'])->name('Products.index');
+Route::get('/products/create/', [ProductController::class, 'create'])->name('Products.create');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('Products.show');
 Route::get('/products/{category}', [ProductController::class, 'filter'])->name('Products.filter');
+
+
 Route::get('/orders', [OrderController::class, 'orders']);
+
 Route::get('/contact', [Contact::class, 'contact']);

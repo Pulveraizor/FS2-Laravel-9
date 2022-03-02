@@ -32,7 +32,7 @@
                         <textarea class="form-control" placeholder="Leave your message here" id="" style="height: 100px"></textarea>
                         <label for="floatingTextarea2"></label>
                     </div>
-                    <div class="container-contact1-form-btn">
+                    <div class="container-contact1-form-btn mt-2 mb-2">
                         <button class="btn btn-secondary">
                             Send
                         </button>

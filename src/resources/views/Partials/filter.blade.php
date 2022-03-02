@@ -11,7 +11,7 @@
             </div>
             @foreach($brands as $brand)
             <div class="d-flex justify-content-between mt-2">
-                <div class="form-check"> <input class="form-check-input" type="checkbox" value="{{$brand->brand}}" id="flexCheckDefault" name="brand"> <label class="form-check-label" for="flexCheckDefault">{{$brand->brand}}</label> </div>
+                <div class="form-check"> <input class="form-check-input" type="checkbox" value="{{$brand->id}}" id="brand-{{$brand->id}}" name="brand"> <label class="form-check-label" for="brand-{{$brand->id}}">{{$brand->name}}</label> </div>
             </div>
             @endforeach
         </div>
@@ -19,14 +19,19 @@
             <div class="heading d-flex justify-content-between align-items-center">
                 <h6 class="text-uppercase">Category</h6>
             </div>
-            
-            @foreach($categories as $item)
+
+            @foreach($categories as $category)
             <div class="d-flex justify-content-between mt-2">
-                <div class="form-check"> <input class="form-check-input" type="checkbox" value="{{$item->id}}" id="flexCheckDefault" name="category"> <label class="form-check-label" for="flexCheckDefault">{{$item->category}}</label> </div>
+                <div class="form-check"> <input class="form-check-input" type="checkbox" value="{{$category->id}}" id="type-{{$category->id}}" name="category"> <label class="form-check-label" for="type-{{$category->id}}">{{$category->type}}</label> </div>
             </div>
             @endforeach
         </div>
-        @include('Products.sort')
+        <select class="form-select mb-2" aria-label="Default select example" name="order_by">
+            <option disabled selected>Sort by</option>
+            <option value="newest">Newest</option>
+            <option value="price">Price</option>
+            <option value="type">Type</option>
+        </select>
         <button class="btn btn-secondary col-12">Filter</button>
     </div>
 
