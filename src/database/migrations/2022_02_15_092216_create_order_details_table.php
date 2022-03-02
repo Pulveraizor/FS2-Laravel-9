@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('user')->onDelete('restrict');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->decimal('total');
             $table->foreignId('payment_id')->references('id')->on('payment_details')->onDelete('restrict');
             $table->timestamps();
